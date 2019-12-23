@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<textarea id="myTextarea" rows="5" cols="100"></textarea>
+
+<br><br>   
+    
+<button type="button" onclick="myFunction()">Try it</button>
+<button onclick="copy()">Copy text</button>
+<br><br>
+<div id="myDIV2"></div>
+<textarea id="myTextarea2" rows="5" cols="100" style="font-family: calibri;font-size: 15px"></textarea>
+
+<div id="myDIV" style="font-family: calibri;font-size: 15px"></div>  
+    
+    
+    
+    
+
+<script>
+document.getElementById("myTextarea2").value = "";
+    
+function myFunction() {
+	var str = document.getElementById("myTextarea").value;
+	var x = str.split(/ /);
+	
+	
+	var orpart = "ROW(A1)=" + x[0];
+	
+	for(var i=1; i<x.length; i++){
+		orpart += ",ROW(A1)=" + x[i];
+	}
+	
+	var finaltext = "=if(OR(" + orpart + "),'GE1401'!A1)";
+	
+	document.getElementById("myTextarea2").value = finaltext;
+
+}
+
+
+//copy function
+function copy() {
+  var copyText = document.getElementById("myTextarea2");
+  copyText.select();
+  document.execCommand("copy");
+}
+</script>
